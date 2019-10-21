@@ -1,0 +1,12 @@
+<!-- where the member is the same with the output [member] = "sellectedmenmber" and etc  -->
+<div *ngIf="member">
+
+   <h2>{{member.name | uppercase}} Details</h2>
+   <div><span>id: </span>{{member.id}}</div>
+   <div>
+      <label>name:
+         <input [(ngModel)]="member.name" placeholder="name" />
+      </label>
+   </div>
+
+</div>
