@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Member} from '../member';
 import { MemberService } from '../member.service';
-import { MEMBERS } from './mock-members';
+import {tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-members',
@@ -10,7 +10,9 @@ import { MEMBERS } from './mock-members';
 })
 export class MembersComponent implements OnInit {
 
-  // members = MEMBERS;
+  dataSource: Member [];
+  displayedColumns: string[] = ['id', 'name', 'salary', 'joinDate'];
+
   selectedMember: Member;
   members: Member[];
 
@@ -18,29 +20,24 @@ export class MembersComponent implements OnInit {
 
 
   ngOnInit() {
-     // this.exampleMethod();
       this.getMembers();
+      this.getMembersAsDataSource();
   }
-
-  // check it out what you learn
-  /*
-  exampleMethod() {
-    const myMember = new Member();
-    myMember.id = 1;
-    myMember.name = 'Thanasis';
-    myMember.id = 3;
-    myMember.name = 'Nick';
-    this.members.push(myMember);
-    console.log(this.members);
-
-  }
-  */
 
   onSelectMember(member: Member): void {
     this.selectedMember = member;
   }
 
-  getMembers(): void {
-        this.memberService.getMembers().subscribe(members => this.members = members);
+  add(name: string ): void {
+    name = name.trim();
+    if (!name) { return; }
   }
+
+  getMembers(): void {
+        this.memberService.getMembers().pipe(tap(_ => console.log(this.members))).subscribe(members => this.members = members);
+  }
+
+  getMembersAsDataSource(): void  {
+      this.memberService.getMembers().subscribe(members => this.dataSource = members);
+   }
 }

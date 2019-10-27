@@ -20,8 +20,6 @@ export class DashboardComponent implements OnInit {
 
   getMembers(): void {
     this.memberService.getMembers().subscribe(members => this.members = members.slice(2, 5));
-
-
   }
 
 

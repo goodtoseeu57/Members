@@ -2,6 +2,7 @@ import { Component, OnInit , Input } from '@angular/core';
 import {Member} from '../member';
 import { ActivatedRoute } from '@angular/router';
 import { MemberService } from '../member.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-member-detail',
@@ -11,7 +12,8 @@ import { MemberService } from '../member.service';
 export class MemberDetailComponent implements OnInit {
   @Input() member: Member;
   constructor(private route: ActivatedRoute,
-              private memberService: MemberService
+              private memberService: MemberService,
+              private location: Location
               ) { }
 
   ngOnInit(): void {
@@ -19,9 +21,19 @@ export class MemberDetailComponent implements OnInit {
 
   }
 
+  goBack() {
+    this.location.back();
+  }
+
   getMember() {
     const id = +this.route.snapshot.paramMap.get('id') ;
     this.memberService.getMember(id).subscribe(member => this.member = member);
   }
 
+  save(): void {
+    this.memberService.updateMember(this.member).subscribe(() => this.goBack());
+  }
+
 }
+
+// you do it like this
