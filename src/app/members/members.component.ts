@@ -31,6 +31,9 @@ export class MembersComponent implements OnInit {
   add(name: string ): void {
     name = name.trim();
     if (!name) { return; }
+    this.memberService.addMember({name} as Member).
+    pipe(
+    ).subscribe(member => this.members.push(member));
   }
 
   getMembers(): void {

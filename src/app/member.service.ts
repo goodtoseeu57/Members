@@ -36,7 +36,9 @@ export class MemberService {
     return this.http.put(this.membersUrl, member , this.httpOptions).pipe(
       tap(_ => console.log(`update the member with this ${member.id}`))
     );
-
+  }
+  addMember(member: Member): Observable<Member> {
+    return this.http.post<Member>(this.membersUrl , member , this.httpOptions);
   }
 }
 
