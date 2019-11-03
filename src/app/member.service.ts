@@ -16,7 +16,6 @@ export class MemberService {
     headers: new HttpHeaders({ 'Content - Type': 'application / json}'})
   };
 
-
   constructor(private messageService: MessagesService, private http: HttpClient ) {}
   // get the object and after return the data
   private membersUrl = '/api/members';
