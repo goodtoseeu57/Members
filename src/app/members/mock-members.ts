@@ -2,6 +2,7 @@ import {Member} from '../member';
 
 
 export const MEMBERS: Member[] = [
+   /*
    { id: 11, name: 'Nick ' },
    { id: 12, name: 'stefanos' },
    { id: 13, name: 'Bomb' },
@@ -12,4 +13,7 @@ export const MEMBERS: Member[] = [
    { id: 18, name: 'Dr IQ' },
    { id: 19, name: 'Magma' },
    { id: 20, name: 'Tornado' }
+
+
+   */
 ];

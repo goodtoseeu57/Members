@@ -9,16 +9,16 @@ import { Injectable } from '@angular/core';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const members = [
-      { id: 11, name: 'Nicolassss', salary: 19200, age: 34, joinDate: '10-10-2018' },
-      { id: 12, name: 'Narco', salary: 19203, joinDate: '10-10-2018' },
-      { id: 13, name: 'Bombasto', salary: 19250, joinDate: '10-10-2018'},
-      { id: 14, name: 'Celeritas', salary: 192050, joinDate: '10-10-2018'},
-      { id: 15, name: 'Magneta', salary: 1920088, joinDate: '10-10-2018'},
-      { id: 16, name: 'RubberMan', salary: 1920088, joinDate: '10-10-2018'},
-      { id: 17, name: 'Dynama', salary: 1920088, joinDate: '10-10-2018' },
-      { id: 18, name: 'Dr IQ', salary: 1920088, joinDate: '10-10-2018'},
-      { id: 19, name: 'Magma', salary: 19208980, joinDate: '10-10-2018'},
-      { id: 20, name: 'Tornado', salary: 19200934, joinDate: '10-10-2018'}
+      { id: 11, name: 'Nicolassss', salary: 1920, age: 84, joinDate: '10-10-2018' },
+      { id: 12, name: 'Narco', salary: 1923, age: 24, joinDate: '10-10-2018' },
+      { id: 13, name: 'Bombasto', salary: 10023, age: 34, joinDate: '10-10-2018'},
+      { id: 14, name: 'Celeritas', salary: 1090, age: 74 , joinDate: '10-10-2018'},
+      { id: 15, name: 'Magneta', salary: 19200, age: 64, joinDate: '10-10-2018'},
+      { id: 16, name: 'RubberMan', salary: 19200, age: 34, joinDate: '10-10-2018'},
+      { id: 17, name: 'Dynama', salary: 26208,  age: 24, joinDate: '10-10-2018' },
+      { id: 18, name: 'Dr IQ', salary: 292008,  age: 24, joinDate: '10-10-2018'},
+      { id: 19, name: 'Magma', salary: 192089, age: 37, joinDate: '10-10-2018'},
+      { id: 20, name: 'Tornado', salary: 39200 , age: 35 , joinDate: '10-10-2018'}
     ];
     return { members };
   }

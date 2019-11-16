@@ -10,9 +10,12 @@ import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatTableModule } from '@angular/material/table';
 import {HttpClientModule} from '@angular/common/http';
-import { HttpClient } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
+import { MatButtonModule } from '@angular/material/button';
+import { HeroSearchComponent } from './hero-search/hero-search.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -20,14 +23,16 @@ import { InMemoryDataService } from './in-memory-data.service';
     MembersComponent,
     MemberDetailComponent,
     MessagesComponent,
-    DashboardComponent
+    DashboardComponent,
+    HeroSearchComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule, FormsModule, MatTableModule, HttpClientModule,  HttpClientInMemoryWebApiModule,
     HttpClientInMemoryWebApiModule.forRoot( InMemoryDataService, { dataEncapsulation: false },
-    )
+    ), MatButtonModule, MatInputModule, MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]
