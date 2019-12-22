@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Member } from '../member';
 import { MemberService } from '../member.service';
-import { tap   } from 'rxjs/operators';
-import { MatTableDataSource } from '@angular/material/table';
+import {Newmember} from '../Models/newmembers';
+import {ApiService} from '../api.service';
 
 @Component({
     selector: 'app-members',
@@ -13,24 +13,33 @@ export class MembersComponent implements OnInit {
 
 
     displayedColumns: string[] = ['id', 'name', 'salary', 'joinDate', 'actions'];
-    dataSource: any;
+    dataSource = new Array<Member>();
     memberName: any;
+    apiMembers = new Array<Newmember>();
 
     selectedMember: Member;
     members: Member[];
+    newMembers: Newmember[];
     membersArray = new Array<Member>();
     data = new Array<Member>();
     totalSalar =  0;
 
-    constructor(private memberService: MemberService) { }
+    constructor(private memberService: MemberService , private apiService: ApiService) { }
 
 
     ngOnInit() {
-        // this.displayedColumns();
-        this.getMembers();
-        this.getMembersAsDataSource();
-        console.log(this.makeName('nick', 'stavros'));
+      // this.displayedColumns();
+      this.getMembers();
+      this.getMembersAsDataSource();
+      this.getMembersfromApi();
+      console.log(this.makeName('nick', 'stavros'));
 
+    }
+     getMembersfromApi() {
+      this.apiService.getApiMembers().subscribe((newMembers) => {
+        this.apiMembers = newMembers;
+        console.table(this.apiMembers);
+      });
     }
 
     onSelectMember(member: Member): void {
@@ -60,7 +69,6 @@ export class MembersComponent implements OnInit {
     getMembers(): void {
         this.memberService.getMembers().pipe().subscribe((members) => {
             this.members = members;
-            this.dataSource = new MatTableDataSource(this.members);
             this.totalSalar = this.members.map(t => t.salary).reduce((acc, value) => acc + value , 0);
 
             this.displayData(this.members);
@@ -86,8 +94,11 @@ export class MembersComponent implements OnInit {
 
     makeName = (f: string, l: string) => ({ first: f, last: l });
 
-  applyFilter(filterValue: string): void {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  applyFilter(filterValue: string , mydata?: any): void {
+    this.memberService.getMembers().subscribe((members) => {
+      this.dataSource = members;
+    });
+
 
   }
 

@@ -12,6 +12,11 @@
    </h1>
 </ul>
 
+<div *ngFor="let apiMember of apiMembers">
+  <p> {{apiMember.email}}</p>
+
+</div>
+
 <div>
    <mat-form-field>
       <input matInput [(ngModel)]="value" >
